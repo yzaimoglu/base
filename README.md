@@ -37,7 +37,7 @@
 
 ## Built With
 
-We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [CCache](https://github.com/karlseguin/ccache), [Svelte](https://svelte.dev/), [Tailwind](https://tailwindcss.com/) and [Shadcn-UI](https://ui.shadcn.com/).
+We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [Otter](https://github.com/maypok86/otter), [Svelte](https://svelte.dev/), [Tailwind](https://tailwindcss.com/) and [Shadcn-UI](https://ui.shadcn.com/).
 
 ## Getting Started
 
@@ -80,7 +80,7 @@ Distributed under the BSD-3 License. See [LICENSE](https://github.com/yzaimoglu/
 
 * [Go](https://go.dev)
 * [Pocketbase](https://pocketbase.io)
-* [CCache](https://github.com/karlseguin/ccache)
+* [Otter](https://github.com/maypok86/otter)
 * [Svelte](https://svelte.dev/)
 * [Tailwind](https://tailwindcss.com/)
 * [Shadcn-UI](https://ui.shadcn.com/)
