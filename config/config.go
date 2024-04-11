@@ -23,7 +23,7 @@ func Preconfiguration() {
 	if port == 0 {
 		port = 3000
 	}
-	os.Args = append(os.Args, fmt.Sprintf("--http=127.0.0.1:%d", port))
+	os.Args = append(os.Args, fmt.Sprintf("--http=0.0.0.0:%d", port))
 }
 
 func ConfigureLogger() {
