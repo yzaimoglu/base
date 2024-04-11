@@ -9,7 +9,7 @@ import (
 func main() {
 	config.Preconfiguration()
 	config.ConfigureLogger()
-	log.Info().Msg("Starting server...")
+	log.Info().Msg("Starting the server...")
 
 	a := base.NewBase()
 	config.ConfigurePocketbase(a)
