@@ -1,5 +1,5 @@
 NAME = base
-TARGET = ./${NAME}
+TARGET = ./bin/${NAME}
 
 .PHONY: run clean build fdev bdev fbuild bbuild prod install finstall binstall
 

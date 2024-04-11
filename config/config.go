@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/rs/zerolog"
@@ -12,11 +13,13 @@ import (
 
 const (
 	EnvPort = "PORT"
+
+	StandardTTL = 3 * time.Hour
 )
 
 func Preconfiguration() {
 	godotenv.Load()
-	port := GetInteger(EnvPort)
+	port := GetUInteger(EnvPort)
 	if port == 0 {
 		port = 3000
 	}
@@ -46,6 +49,16 @@ func GetInteger(key string) int64 {
 	i, err := strconv.ParseInt(s, 10, 64)
 	if err != nil {
 		log.Info().Msgf("Could not parse int, returning 0: %s", err.Error())
+		return 0
+	}
+	return i
+}
+
+func GetUInteger(key string) uint64 {
+	s := os.Getenv(key)
+	i, err := strconv.ParseUint(s, 10, 64)
+	if err != nil {
+		log.Info().Msgf("Could not parse uint, returning 0: %s", err.Error())
 		return 0
 	}
 	return i
