@@ -15,11 +15,11 @@ COPY go.mod go.sum ./
 RUN go mod download
 COPY . /app
 COPY --from=frontend-builder /builder/build ./ui/build/
-RUN CGO_ENABLED=0 GOOS=linux go build -o /entrypoint
+RUN CGO_ENABLED=0 GOOS=linux go build -o /base/entrypoint
 
 # Deploy.
 FROM gcr.io/distroless/static-debian11 AS release-stage
 WORKDIR /
-COPY --from=build-stage /entrypoint /entrypoint
+COPY --from=build-stage /base/entrypoint /base/entrypoint
 USER nonroot:nonroot
-ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["/base/entrypoint"]
