@@ -1,0 +1,14 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "description": "Base setup for Templ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yagi",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

@@ -12,7 +12,8 @@ import (
 )
 
 const (
-	EnvPort = "PORT"
+	EnvPort  = "PORT"
+	EnvDebug = "DEBUG"
 
 	StandardTTL = 3 * time.Hour
 )
@@ -24,6 +25,10 @@ func Preconfiguration() {
 		port = 3000
 	}
 	os.Args = append(os.Args, fmt.Sprintf("--http=0.0.0.0:%d", port))
+}
+
+func IsDebug() bool {
+	return GetBoolean(EnvDebug)
 }
 
 func ConfigureLogger() {

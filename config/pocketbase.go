@@ -18,6 +18,7 @@ func ConfigurePocketbase(a *base.Base) {
 
 func ConfigureRouter(e *echo.Echo, a *base.Base) error {
 	router := http.NewRouter(e, a)
+	router.Echo.Static("/static", "./ui/static")
 	router.Setup()
 	return nil
 }

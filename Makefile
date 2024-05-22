@@ -1,35 +1,39 @@
 NAME = base
 TARGET = ./bin/${NAME}
 
-.PHONY: run clean build fdev bdev fbuild bbuild prod install finstall binstall
+.PHONY: run prod backend-install tailwind tailwind-build tailwind-install templ templ-dev templ-build install build dev
 
-run: build
+run: dev
 	@go run main.go serve
 
 prod: build
 	@./$(TARGET) serve
 
-fdev:
-	@npm run dev --prefix ./ui
-
-bdev:
-	@go run base.go serve
-
-fbuild:
-	@npm run build --prefix ./ui
-
-bbuild:
-	@go build -o $(TARGET) main.go
-
-finstall:
-	@npm install --prefix ./ui
-
-binstall:
+backend-install:
 	@go mod tidy
 
-install: finstall binstall
+tailwind:
+	@npx tailwindcss -i ./ui/input.css -o ./ui/static/main.css --watch
 
-build: fbuild bbuild
+tailwind-build:
+	@npx tailwindcss -i ./ui/input.css -o ./ui/static/main.css
+
+tailwind-install:
+
+templ: templ-dev
+	
+templ-dev:
+	@templ generate --watch
+
+templ-build:
+	@templ fmt .
+	@templ generate
+
+dev: tailwind-build templ-build
+
+install: tailwind-build backend-install
+
+build: tailwind-build templ-build backend-build
 	
 clean:
 	@rm -f $(TARGET)
