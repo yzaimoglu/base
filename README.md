@@ -7,7 +7,7 @@
   <h3 align="center">Base</h3>
 
   <p align="center">
-    A preconfigured extended Pocketbase app with Svelte as a Frontend to use in future applications
+    A preconfigured extended Pocketbase app with <a href="https://github.com/yzaimoglu/base/tree/svelte">Svelte</a> or <a href="https://github.com/yzaimoglu/base/tree/templ">Templ</a> as a Frontend to use in future applications
     <br/>
     <br/>
     <a href="https://github.com/yzaimoglu/base/issues">Report Bug</a>
