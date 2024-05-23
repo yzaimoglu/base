@@ -44,6 +44,7 @@ templ Head(title, description string, alpine bool, htmx bool) {
 		}
 		if alpine {
 			<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+			<style>[x-cloak]{display:none}</style>
 		}
 		if htmx && alpine {
 			<script src="https://unpkg.com/htmx.org@latest/dist/ext/alpine-morph.js"></script>
