@@ -2,16 +2,25 @@ package home
 
 import "github.com/yzaimoglu/base/utils/http"
 
+templ Test() {
+}
+
 templ Show() {
 	<div>
-		<p>CSRF:<br>
-		{ http_utils.CSRF(ctx) }
+		<p>
+			CSRF:
+			<br/>
+			{ http_utils.CSRF(ctx) }
 		</p>
-		<p>RequestID:<br>
-		{ http_utils.RequestID(ctx) }
+		<p>
+			RequestID:
+			<br/>
+			{ http_utils.RequestID(ctx) }
 		</p>
-		<p>Current Path:<br>
-		{ http_utils.CurrentPath(ctx) }
+		<p>
+			Current Path:
+			<br/>
+			{ http_utils.CurrentPath(ctx) }
 		</p>
 	</div>
 }

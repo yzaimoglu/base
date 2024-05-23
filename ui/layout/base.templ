@@ -1,16 +1,30 @@
 package layout
 
-import ()
+import "github.com/yzaimoglu/base/ui/components"
+import "github.com/yzaimoglu/base/ui/config"
+
+templ CenterPage(gap uint16) {
+	<div class={ ui_config.BackgroundColor + " flex flex-col justify-center items-center gap-{gap} min-h-screen" }>
+		{ children... }
+	</div>
+}
+
+templ FullPage() {
+	<div class="min-h-screen">
+		{ children... }
+	</div>
+}
 
 templ Base(title, description string, alpine bool, htmx bool, cmp templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" data-theme="light">
 		@Head(title, description, alpine, htmx)
 		<body>
+			@components.CookieBanner(1000)
 			// @components.Header()
-			<main class="container mx-auto">
+			@CenterPage(2) {
 				@cmp
-			</main>
+			}
 			// @components.Footer()
 		</body>
 	</html>
@@ -44,6 +58,7 @@ templ Head(title, description string, alpine bool, htmx bool) {
 		}
 		if alpine {
 			<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+			<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 			<style>[x-cloak]{display:none}</style>
 		}
 		if htmx && alpine {

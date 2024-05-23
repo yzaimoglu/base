@@ -25,6 +25,14 @@ func (c *HomeController) Show(ctx echo.Context) error {
 	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Show()))
 }
 
+func (c *HomeController) Test(ctx echo.Context) error {
+	title := "Test"
+	description := "Test Description"
+	alpine := true
+	htmx := true
+	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Test()))
+}
+
 func (c *HomeController) Index(ctx echo.Context) error {
 	title := "Test"
 	description := "Test Description"

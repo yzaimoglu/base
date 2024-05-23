@@ -32,6 +32,7 @@ func (r *Router) Setup() {
 	r.MiddlewareSetup()
 	r.Echo.GET("/api/v1/test", r.Controller.API.Test)
 	r.Echo.GET("/", r.Controller.Home.Index)
+	r.Echo.GET("/test", r.Controller.Home.Test)
 }
 
 func (r *Router) MiddlewareSetup() {
