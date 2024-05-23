@@ -37,7 +37,7 @@
 
 ## Built With
 
-We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [Otter](https://github.com/maypok86/otter), [Svelte](https://svelte.dev/), [Tailwind](https://tailwindcss.com/) and [Shadcn-UI](https://ui.shadcn.com/).
+We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [Otter](https://github.com/maypok86/otter), [Templ](https://templ.guide/), [Tailwind](https://tailwindcss.com/), [Alpine](https://alpinejs.dev/) and [HTMX](https://htmx.org/).
 
 ## Getting Started
 
@@ -81,7 +81,8 @@ Distributed under the BSD-3 License. See [LICENSE](https://github.com/yzaimoglu/
 * [Go](https://go.dev)
 * [Pocketbase](https://pocketbase.io)
 * [Otter](https://github.com/maypok86/otter)
-* [Svelte](https://svelte.dev/)
+* [Templ](https://svelte.dev/)
 * [Tailwind](https://tailwindcss.com/)
-* [Shadcn-UI](https://ui.shadcn.com/)
+* [Alpine](https://alpinejs.dev/)
+* [HTMX](https://htmx.org/)
 * [Gopherize Me](https://gopherize.me/)
