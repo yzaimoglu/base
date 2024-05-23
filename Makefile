@@ -1,10 +1,16 @@
-NAME = base
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+endif
 TARGET = ./bin/${NAME}
 
-.PHONY: run prod backend-install tailwind tailwind-build tailwind-install templ templ-dev templ-build install build dev
+.PHONY: run dev prod backend-install tailwind tailwind-build tailwind-install templ templ-dev templ-build install build dev
 
-run: dev
-	@go run main.go serve
+run:
+	wgo -file=.go -file=.templ -xfile=_templ.go npx tailwindcss -i ./ui/input.css -o ./ui/static/main.css :: templ generate :: go run main.go serve
+	
+dev:
+	@npx tailwindcss -i ./ui/input.css -o ./ui/static/main.css :: templ generate :: go run main.go serve
 
 prod: build
 	@./$(TARGET) serve

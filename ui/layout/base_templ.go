@@ -12,7 +12,7 @@ import "bytes"
 
 import ()
 
-func Base(title, description string, alpine bool, cmp templ.Component) templ.Component {
+func Base(title, description string, alpine bool, htmx bool, cmp templ.Component) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -29,7 +29,7 @@ func Base(title, description string, alpine bool, cmp templ.Component) templ.Com
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = Head(title, description, alpine).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = Head(title, description, alpine, htmx).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -52,7 +52,7 @@ func Base(title, description string, alpine bool, cmp templ.Component) templ.Com
 	})
 }
 
-func Head(title, description string, alpine bool) templ.Component {
+func Head(title, description string, alpine bool, htmx bool) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -82,8 +82,20 @@ func Head(title, description string, alpine bool) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
+		if htmx {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"https://unpkg.com/htmx.org@latest\"></script> <script src=\"https://unpkg.com/htmx.org@1.9.12/dist/ext/loading-states.js\"></script>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
 		if alpine {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"https://unpkg.com/alpinejs\" defer></script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js\"></script>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		if htmx && alpine {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"https://unpkg.com/htmx.org@latest/dist/ext/alpine-morph.js\"></script> <script defer src=\"https://unpkg.com/@alpinejs/morph@3.x.x/dist/cdn.min.js\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -95,7 +107,7 @@ func Head(title, description string, alpine bool) templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/layout/base.templ`, Line: 44, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/layout/base.templ`, Line: 52, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

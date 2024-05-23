@@ -2,10 +2,10 @@ package layout
 
 import ()
 
-templ Base(title, description string, alpine bool, cmp templ.Component) {
+templ Base(title, description string, alpine bool, htmx bool, cmp templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" data-theme="light">
-		@Head(title, description, alpine)
+		@Head(title, description, alpine, htmx)
 		<body>
 			// @components.Header()
 			<main class="container mx-auto">
@@ -16,7 +16,7 @@ templ Base(title, description string, alpine bool, cmp templ.Component) {
 	</html>
 }
 
-templ Head(title, description string, alpine bool) {
+templ Head(title, description string, alpine bool, htmx bool) {
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -38,8 +38,16 @@ templ Head(title, description string, alpine bool) {
 		<meta name="msapplication-TileColor" content="#ffffff"/>
 		<meta name="msapplication-TileImage" content="/static/ms-icon-144x144.png"/>
 		<meta name="theme-color" content="#ffffff"/>
+		if htmx {
+			<script src="https://unpkg.com/htmx.org@latest"></script>
+			<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/loading-states.js"></script>
+		}
 		if alpine {
-			<script src="https://unpkg.com/alpinejs" defer></script>
+			<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+		}
+		if htmx && alpine {
+			<script src="https://unpkg.com/htmx.org@latest/dist/ext/alpine-morph.js"></script>
+			<script defer src="https://unpkg.com/@alpinejs/morph@3.x.x/dist/cdn.min.js"></script>
 		}
 		<title>{ title }</title>
 	</head>

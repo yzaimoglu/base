@@ -5,11 +5,11 @@ import (
 	"net/url"
 	"os"
 	"path"
-	"strconv"
 
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v5"
 	"github.com/rs/zerolog/log"
+	config_utils "github.com/yzaimoglu/base/utils/config"
 	"github.com/yzaimoglu/base/utils/crypto"
 )
 
@@ -27,13 +27,7 @@ func (v *View) Handle(c echo.Context, cmp templ.Component) error {
 }
 
 func (v *View) saveLocallyDev(cmp templ.Component, url *url.URL) error {
-	debug := os.Getenv("DEBUG")
-	debugBool, err := strconv.ParseBool(debug)
-	if err != nil {
-		debugBool = false
-	}
-
-	if debugBool {
+	if config_utils.IsDebug() {
 		rootPath := "./ui/html/"
 
 		dir := path.Join(rootPath)

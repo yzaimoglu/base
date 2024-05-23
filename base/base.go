@@ -17,7 +17,3 @@ func NewBase() *Base {
 		Caches: NewCache(10_000),
 	}
 }
-
-func (b *Base) AddRouter() {
-
-}
