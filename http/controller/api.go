@@ -2,14 +2,18 @@ package controller
 
 import (
 	"github.com/labstack/echo/v5"
+	"github.com/yzaimoglu/base/base"
 	"github.com/yzaimoglu/base/types"
 )
 
 type ApiController struct {
+	Base *base.Base
 }
 
-func NewApiController() *ApiController {
-	return &ApiController{}
+func NewApiController(b *base.Base) *ApiController {
+	return &ApiController{
+		Base: b,
+	}
 }
 
 func (c *ApiController) Test(ctx echo.Context) error {

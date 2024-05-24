@@ -24,7 +24,7 @@ func NewRouter(e *echo.Echo, b *base.Base) *Router {
 		Base:       b,
 		Echo:       e,
 		View:       view.NewView(),
-		Controller: NewController(),
+		Controller: NewController(b),
 	}
 }
 
@@ -45,8 +45,8 @@ func (r *Router) MiddlewareSetup() {
 	r.Echo.Use(middleware.Recover())
 	log.Info().Msg("Enabling secure middleware.")
 	r.Echo.Use(middleware.Secure())
-	log.Info().Msg("Enabling csrf middleware.")
-	r.Echo.Use(middleware.CSRF())
+	// log.Info().Msg("Enabling csrf middleware.")
+	// r.Echo.Use(middleware.CSRF())
 	limitMB := 50
 	log.Info().Msgf("Enabling body limit middleware set to %d MB.", limitMB)
 	r.Echo.Use(middleware.BodyLimit(50 * 1024 * 1024)) // 50 MB Body Limit
