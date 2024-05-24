@@ -21,6 +21,7 @@ func SetContextValues(next echo.HandlerFunc) echo.HandlerFunc {
 		}
 		c.Set(KeyRequestID, c.Response().Header().Get(echo.HeaderXRequestID))
 		c.Set(KeyCurrentPath, c.Request().URL.Path)
+		c.Set(KeyUserAgent, c.Request().UserAgent())
 		return next(c)
 	}
 }

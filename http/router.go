@@ -2,6 +2,7 @@ package http
 
 import (
 	net_http "net/http"
+	"time"
 
 	"github.com/labstack/echo/v5"
 	"github.com/labstack/echo/v5/middleware"
@@ -61,9 +62,9 @@ func (r *Router) MiddlewareSetup() {
 				Str("type", "http").
 				Int("status", v.Status).
 				Str("uri", v.URI).
+				Str("user_agent", c.Get(http_utils.KeyUserAgent).(string)).
 				Str("request_id", c.Get(http_utils.KeyRequestID).(string)).
-				Str("csrf_token", c.Get(http_utils.KeyCSRF).(string)).
-				Msgf("received.")
+				Msgf("[HTTP] %d:  %d | %s", time.Now().UnixMilli(), v.Status, v.URI)
 			return nil
 		},
 	}))

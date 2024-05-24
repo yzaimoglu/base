@@ -42,6 +42,7 @@ const (
 	KeyCSRF        = "csrf"
 	KeyRequestID   = "request_id"
 	KeyCurrentPath = "current_path"
+	KeyUserAgent   = "user_agent"
 )
 
 func CSRF(ctx context.Context) string {
@@ -54,4 +55,8 @@ func RequestID(ctx context.Context) string {
 
 func CurrentPath(ctx context.Context) string {
 	return GetString(ctx, KeyCurrentPath)
+}
+
+func UserAgent(ctx context.Context) string {
+	return GetString(ctx, KeyUserAgent)
 }
