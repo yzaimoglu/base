@@ -48,8 +48,8 @@ templ CookieBanner(visibleAfter uint16) {
 		</div>
 		<!-- Footer -->
 		<div class="flex flex-col-reverse justify-end gap-2 border-t border-slate-300 bg-slate-100/60 px-4 py-2 sm:flex-row sm:items-center">
-			<button hx-post="/test" hx-target="this" x-on:click="visible = false;" type="button" class={ "cursor-pointer whitespace-nowrap p-2 text-center text-xs font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-" + ui_config.PrimaryColor + " active:opacity-100 active:outline-offset-0 rounded-lg" }>No, thank you</button>
-			<button hx-post="/test" hx-target="this" x-on:click="visible = false;" type="button" class={ "cursor-pointer whitespace-nowrap bg-" + ui_config.PrimaryColor + " px-4 py-2 text-center text-xs font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-" + ui_config.PrimaryColor + " active:opacity-100 active:outline-offset-0 rounded-lg" }>Sounds Good!</button>
+			<button hx-post="/test" hx-swap="none" x-on:click="visible = false;" type="button" class={ "cursor-pointer whitespace-nowrap p-2 text-center text-xs font-medium tracking-wide text-slate-700 transition hover:opacity-75 focus-visible:slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-" + ui_config.PrimaryColor + " active:opacity-100 active:outline-offset-0 rounded-lg" }>No, thank you</button>
+			<button hx-post="/test" hx-swap="none" x-on:click="visible = false;" type="button" class={ "cursor-pointer whitespace-nowrap bg-" + ui_config.PrimaryColor + " px-4 py-2 text-center text-xs font-medium tracking-wide text-slate-100 transition hover:opacity-75 focus-visible:slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-" + ui_config.PrimaryColor + " active:opacity-100 active:outline-offset-0 rounded-lg" }>Sounds Good!</button>
 		</div>
 	</div>
 }
