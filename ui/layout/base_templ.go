@@ -195,13 +195,13 @@ func Head(title, description string, alpine bool, htmx bool, uikit bool) templ.C
 			return templ_7745c5c3_Err
 		}
 		if htmx {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"https://unpkg.com/htmx.org@latest\"></script> <script src=\"https://unpkg.com/htmx.org@1.9.12/dist/ext/loading-states.js\"></script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script src=\"https://unpkg.com/htmx.org@latest\"></script> <script src=\"https://unpkg.com/htmx.org@1.9.12/dist/ext/loading-states.js\"></script> <script src=\"https://unpkg.com/htmx.org@1.9.12/dist/ext/response-targets.js\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
 		if alpine {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js\"></script> <script defer src=\"https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js\"></script> <style>[x-cloak]{display:none}</style>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js\"></script> <script defer src=\"https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

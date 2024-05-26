@@ -58,11 +58,11 @@ templ Head(title, description string, alpine bool, htmx bool, uikit bool) {
 		if htmx {
 			<script src="https://unpkg.com/htmx.org@latest"></script>
 			<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/loading-states.js"></script>
+			<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/response-targets.js"></script>
 		}
 		if alpine {
 			<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 			<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-			<style>[x-cloak]{display:none}</style>
 		}
 		if htmx && alpine {
 			<script src="https://unpkg.com/htmx.org@latest/dist/ext/alpine-morph.js"></script>
