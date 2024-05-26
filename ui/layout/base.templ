@@ -18,7 +18,7 @@ templ FullPage() {
 templ Base(title, description string, alpine bool, htmx bool, cmp templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" data-theme="light">
-		@Head(title, description, alpine, htmx)
+		@Head(title, description, alpine, htmx, true)
 		<body>
 			@components.CookieBanner(1000)
 			// @components.Header()
@@ -30,12 +30,15 @@ templ Base(title, description string, alpine bool, htmx bool, cmp templ.Componen
 	</html>
 }
 
-templ Head(title, description string, alpine bool, htmx bool) {
+templ Head(title, description string, alpine bool, htmx bool, uikit bool) {
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="description" content={ description }/>
 		<link href="/static/main.css" rel="stylesheet"/>
+		if uikit {
+			<script defer src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js"></script>
+		}
 		<link rel="apple-touch-icon" sizes="60x60" href="/static/apple-icon-60x60.png"/>
 		<link rel="apple-touch-icon" sizes="72x72" href="/static/apple-icon-72x72.png"/>
 		<link rel="apple-touch-icon" sizes="76x76" href="/static/apple-icon-76x76.png"/>

@@ -31,7 +31,7 @@ func (c *HomeController) Show(ctx echo.Context) error {
 func (c *HomeController) Test(ctx echo.Context) error {
 	title := "Test"
 	description := "Test Description"
-	alpine := true
+	alpine := false
 	htmx := true
 	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Test()))
 }
