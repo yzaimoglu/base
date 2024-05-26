@@ -1,3 +1,5 @@
+import presetQuick from "franken-ui/shadcn-ui/preset-quick";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -5,4 +7,5 @@ module.exports = {
   theme: {
     extend: {},
   },
+  presets: [presetQuick({ theme: "slate" })],
 }

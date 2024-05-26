@@ -4,11 +4,21 @@
   "description": "Base setup for Templ",
   "main": "index.js",
   "scripts": {
+    "build": "postcss ./ui/input.css -o ./ui/static/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yagi",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "autoprefixer": "^10.4.19",
+    "cssnano": "^7.0.1",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "franken-ui": "^0.0.12",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-sort-media-queries": "^5.2.0"
   }
 }
