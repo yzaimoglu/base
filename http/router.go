@@ -40,6 +40,11 @@ func (r *Router) Setup() {
 	viewGroup := r.Echo.Group("/", middleware.CSRF())
 	viewGroup.GET("", r.Controller.Home.Index)
 	viewGroup.GET("franken", r.Controller.Home.Franken)
+
+	errorGroup := r.Echo.Group("/")
+	errorGroup.GET("400", r.Controller.Error.BadRequest)
+	errorGroup.GET("404", r.Controller.Error.NotFound)
+	errorGroup.GET("500", r.Controller.Error.InternalServerError)
 }
 
 func (r *Router) MiddlewareSetup() {
@@ -72,6 +77,8 @@ func (r *Router) MiddlewareSetup() {
 			return nil
 		},
 	}))
+	log.Info().Msg("Registering custom http error handler.")
+	r.Echo.HTTPErrorHandler = http_utils.NewHTTPErrorHandler(true)
 
 	log.Info().Msg("Registering static assets.")
 	if config_utils.IsDebug() {

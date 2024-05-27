@@ -7,16 +7,18 @@ import (
 )
 
 type Controller struct {
-	Base *base.Base
-	Home *controller.HomeController
-	API  *controller.ApiController
+	Base  *base.Base
+	Home  *controller.HomeController
+	Error *controller.ErrorController
+	API   *controller.ApiController
 }
 
 func NewController(b *base.Base) *Controller {
 	v := view.NewView()
 	return &Controller{
-		Base: b,
-		Home: controller.NewHomeController(b, v),
-		API:  controller.NewApiController(b),
+		Base:  b,
+		Home:  controller.NewHomeController(b, v),
+		Error: controller.NewErrorController(b, v),
+		API:   controller.NewApiController(b),
 	}
 }
