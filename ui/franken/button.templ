@@ -26,6 +26,16 @@ type ButtonData struct {
 	Class    []string
 }
 
+templ Button(data ButtonData) {
+	if data.Link != "" {
+		<a href={ templ.URL(data.Link) }>
+			<button disabled?={ data.Disabled } type={ string(data.Type) } class={ templ.Classes("uk-button", fmt.Sprint("uk-button-"+data.Color), data.Class) }>{ data.Text }</button>
+		</a>
+	} else {
+		<button disabled?={ data.Disabled } type={ string(data.Type) } class={ templ.Classes("uk-button", fmt.Sprint("uk-button-"+data.Color), data.Class) }>{ data.Text }</button>
+	}
+}
+
 func ButtonBuilder() *ButtonData {
 	return &ButtonData{
 		Text:     "Button",
@@ -67,14 +77,4 @@ func (b *ButtonData) SetClass(class ...string) *ButtonData {
 
 templ (b ButtonData) Finish() {
 	@Button(b)
-}
-
-templ Button(data ButtonData) {
-	if data.Link != "" {
-		<a href={ templ.URL(data.Link) }>
-			<button disabled?={ data.Disabled } type={ string(data.Type) } class={ templ.Classes("uk-button", fmt.Sprint("uk-button-"+data.Color), data.Class) }>{ data.Text }</button>
-		</a>
-	} else {
-		<button disabled?={ data.Disabled } type={ string(data.Type) } class={ templ.Classes("uk-button", fmt.Sprint("uk-button-"+data.Color), data.Class) }>{ data.Text }</button>
-	}
 }

@@ -185,7 +185,7 @@ func Head(title, description string, alpine bool, htmx bool, uikit bool) templ.C
 			return templ_7745c5c3_Err
 		}
 		if uikit {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js\"></script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js\"></script> <script defer src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -219,7 +219,7 @@ func Head(title, description string, alpine bool, htmx bool, uikit bool) templ.C
 		var templ_7745c5c3_Var9 string
 		templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(title)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/layout/base.templ`, Line: 71, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/layout/base.templ`, Line: 72, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 		if templ_7745c5c3_Err != nil {

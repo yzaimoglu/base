@@ -1,0 +1,109 @@
+package franken
+
+type AccordionData struct {
+	Items []singleAccordionData
+}
+
+type AccordionWithComponentData struct {
+	Items []singleAccordionWithComponentData
+}
+
+type singleAccordionData struct {
+	Title   string
+	Open    bool
+	Content string
+}
+
+type singleAccordionWithComponentData struct {
+	Title   string
+	Open    bool
+	Content templ.Component
+}
+
+func getOpenClass(open bool) string {
+	if open {
+		return "uk-open"
+	} else {
+		return ""
+	}
+}
+
+templ Accordion(data AccordionData) {
+	<ul class="uk-accordion" uk-accordion>
+		for _, accordion := range(data.Items) {
+			<li class={ getOpenClass(accordion.Open) }>
+				<a class="uk-accordion-title" href>
+					{ accordion.Title }
+					<span
+						class="uk-accordion-icon"
+						uk-icon="icon: chevron-down; ratio: 0.8"
+					></span>
+				</a>
+				<div class="uk-accordion-content">
+					<p>
+						{ accordion.Content }
+					</p>
+				</div>
+			</li>
+		}
+	</ul>
+}
+
+templ AccordionWithComponent(data AccordionWithComponentData) {
+	<ul class="uk-accordion" uk-accordion>
+		for _, accordion := range(data.Items) {
+			<li class={ getOpenClass(accordion.Open) }>
+				<a class="uk-accordion-title" href>
+					{ accordion.Title }
+					<span
+						class="uk-accordion-icon"
+						uk-icon="icon: chevron-down; ratio: 0.8"
+					></span>
+				</a>
+				<div class="uk-accordion-content">
+					<p>
+						@accordion.Content
+					</p>
+				</div>
+			</li>
+		}
+	</ul>
+}
+
+func AccordionBuilder() *AccordionData {
+	return &AccordionData{
+		Items: []singleAccordionData{},
+	}
+}
+
+func (a *AccordionData) AddItem(title string, content string, open bool) *AccordionData {
+	a.Items = append(a.Items, singleAccordionData{
+		Title:   title,
+		Open:    open,
+		Content: content,
+	})
+	return a
+}
+
+templ (a AccordionData) Finish() {
+	@Accordion(a)
+}
+
+func AccordionWithComponentBuilder() *AccordionWithComponentData {
+	return &AccordionWithComponentData{
+		Items: []singleAccordionWithComponentData{},
+	}
+}
+
+func (a *AccordionWithComponentData) AddItem(title string, content templ.Component, open bool) *AccordionWithComponentData {
+	a.Items = append(a.Items, singleAccordionWithComponentData{
+		Title:   title,
+		Open:    open,
+		Content: content,
+	})
+	return a
+}
+
+templ (a AccordionWithComponentData) Finish() {
+	@AccordionWithComponent(a)
+}
