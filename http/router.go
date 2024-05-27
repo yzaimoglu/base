@@ -39,7 +39,7 @@ func (r *Router) Setup() {
 	log.Info().Msg("Registering view routes.")
 	viewGroup := r.Echo.Group("/", middleware.CSRF())
 	viewGroup.GET("", r.Controller.Home.Index)
-	viewGroup.GET("test", r.Controller.Home.Test)
+	viewGroup.GET("franken", r.Controller.Home.Franken)
 }
 
 func (r *Router) MiddlewareSetup() {

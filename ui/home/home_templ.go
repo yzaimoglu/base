@@ -14,7 +14,7 @@ import "github.com/yzaimoglu/base/utils/http"
 import "github.com/yzaimoglu/base/ui/franken"
 import "github.com/yzaimoglu/base/ui/lucide"
 
-func Test() templ.Component {
+func Franken() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -27,7 +27,7 @@ func Test() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-green-100 border border-2 border-green-200 p-8 rounded-lg\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"container mx-auto w-1/2 flex flex-col gap-2\"><div class=\"bg-white border border-2 border-slate-50 p-8 rounded-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -43,35 +43,48 @@ func Test() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"container mx-auto w-1/2 bg-green-100 border border-2 border-green-200 p-8 rounded-lg\">")
+		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Test").SetLink("https://yagi.sh").SetColor(franken.FrankenColorDanger).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AccordionBuilder().AddItem("hello", "hello", true).AddItem("hey", "heyho", false).SetMultiple(true).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"bg-white border border-2 border-slate-50 p-8 rounded-lg\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AccordionWithComponentBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.AccordionBuilder().AddItem("hello", templ.Raw("hello"), true).AddItemText("hey", "heyho", false).SetMultiple(false).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"container mx-auto w-1/2 bg-green-100 border border-2 border-green-200 p-8 rounded-lg gap-2 grid\">")
+		templ_7745c5c3_Err = franken.AccordionBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetColor(franken.FrankenColorDanger).SetContent("hello").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"bg-white border border-2 border-slate-50 p-8 rounded-lg gap-2 grid\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetColor(franken.FrankenColorDanger).SetBackgroundColor(franken.TailwindColorPurple, franken.TailwindColor400).SetContent(templ.Raw("hello")).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").SetIcon(lucide.Rocket()).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContentText("hello").Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent(templ.Raw("hello")).SetIcon(lucide.Rocket()).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"bg-white border border-2 border-slate-50 p-8 rounded-lg gap-2 grid\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.ArticleBuilder().SetTitle("Article").SetContent(
+			franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContentText("hello").Finish()).SetMetaText("Description").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -82,7 +95,7 @@ func Test() templ.Component {
 	})
 }
 
-func Show() templ.Component {
+func Index() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -102,7 +115,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.CSRF(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 29, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 36, Col: 25}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -115,7 +128,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.RequestID(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 34, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 41, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -128,7 +141,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.CurrentPath(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 39, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 46, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {

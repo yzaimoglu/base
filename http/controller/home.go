@@ -20,26 +20,18 @@ func NewHomeController(b *base.Base, v *view.View) *HomeController {
 	}
 }
 
-func (c *HomeController) Show(ctx echo.Context) error {
-	title := "Test"
-	description := "Test Description"
+func (c *HomeController) Index(ctx echo.Context) error {
+	title := "Base"
+	description := "A starter project for the GOTH Stack with Franken UI"
 	alpine := true
 	htmx := true
-	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Show()))
+	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Index()))
 }
 
-func (c *HomeController) Test(ctx echo.Context) error {
-	title := "Test"
-	description := "Test Description"
+func (c *HomeController) Franken(ctx echo.Context) error {
+	title := "Franken UI"
+	description := "Implementation of Franken UI components in Go Templ"
 	alpine := false
 	htmx := true
-	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Test()))
-}
-
-func (c *HomeController) Index(ctx echo.Context) error {
-	title := "Test"
-	description := "Test Description"
-	alpine := true
-	htmx := true
-	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Show()))
+	return c.View.Handle(ctx, layout.Base(title, description, alpine, htmx, home.Franken()))
 }

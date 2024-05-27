@@ -185,7 +185,7 @@ func Head(title, description string, alpine bool, htmx bool, uikit bool) templ.C
 			return templ_7745c5c3_Err
 		}
 		if uikit {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script defer src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js\"></script> <script defer src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js\"></script>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<script async src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js\"></script> <script async src=\"https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js\"></script>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

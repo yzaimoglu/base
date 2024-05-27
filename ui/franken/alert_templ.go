@@ -13,19 +13,13 @@ import "bytes"
 import "fmt"
 
 type AlertData struct {
-	Title   string
-	Content string
-	Color   FrankenColor
-	Icon    templ.Component
-	Close   bool
-}
-
-type AlertWithComponentData struct {
-	Title   string
-	Content templ.Component
-	Color   FrankenColor
-	Icon    templ.Component
-	Close   bool
+	Title           string
+	Content         templ.Component
+	Color           FrankenColor
+	BackgroundColor TailwindColor
+	Icon            templ.Component
+	Close           bool
+	Class           []string
 }
 
 func Alert(data AlertData) templ.Component {
@@ -42,9 +36,10 @@ func Alert(data AlertData) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		var templ_7745c5c3_Var2 = []any{templ.Classes(map[string]bool{
-			"uk-alert": true,
+			"uk-alert":                                     true,
+			"bg-" + data.BackgroundColor.String():          data.BackgroundColor.Isset(),
 			fmt.Sprintf("uk-alert-%s", string(data.Color)): string(data.Color) != "",
-		})}
+		}, data.Class)}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -84,100 +79,9 @@ func Alert(data AlertData) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(data.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/alert.templ`, Line: 34, Col: 43}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/alert.templ`, Line: 29, Col: 43}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"uk-alert-description\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var5 string
-		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(data.Content)
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/alert.templ`, Line: 37, Col: 17}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if !templ_7745c5c3_IsBuffer {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
-		}
-		return templ_7745c5c3_Err
-	})
-}
-
-func AlertWithComponent(data AlertWithComponentData) templ.Component {
-	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
-		if !templ_7745c5c3_IsBuffer {
-			templ_7745c5c3_Buffer = templ.GetBuffer()
-			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var6 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var6 == nil {
-			templ_7745c5c3_Var6 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var7 = []any{templ.Classes(map[string]bool{
-			"uk-alert": true,
-			fmt.Sprintf("uk-alert-%s", string(data.Color)): string(data.Color) != "",
-		})}
-		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var7...)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		var templ_7745c5c3_Var8 string
-		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var7).String())
-		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/alert.templ`, Line: 1, Col: 0}
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" uk-alert>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Err = data.Icon.Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if data.Close {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<a href class=\"uk-alert-close\" uk-close></a> ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		if data.Title != "" {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"uk-alert-title\">")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			var templ_7745c5c3_Var9 string
-			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(data.Title)
-			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/alert.templ`, Line: 55, Col: 43}
-			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -207,8 +111,9 @@ func AlertWithComponent(data AlertWithComponentData) templ.Component {
 
 func AlertBuilder() *AlertData {
 	return &AlertData{
-		Color: FrankenColorPrimary,
-		Icon:  templ.NopComponent,
+		Content: templ.NopComponent,
+		Color:   FrankenColorPrimary,
+		Icon:    templ.NopComponent,
 	}
 }
 
@@ -217,8 +122,18 @@ func (a *AlertData) SetTitle(title string) *AlertData {
 	return a
 }
 
-func (a *AlertData) SetContent(content string) *AlertData {
+func (a *AlertData) SetContent(content templ.Component) *AlertData {
 	a.Content = content
+	return a
+}
+
+func (a *AlertData) SetContentText(content string) *AlertData {
+	a.Content = templ.Raw(content)
+	return a
+}
+
+func (a *AlertData) SetBackgroundColor(colorType TailwindColorType, colorWeight TailwindColorWeight) *AlertData {
+	a.BackgroundColor = NewTailwindColor(colorType, colorWeight)
 	return a
 }
 
@@ -237,6 +152,11 @@ func (a *AlertData) SetClose(close bool) *AlertData {
 	return a
 }
 
+func (a *AlertData) SetClass(class ...string) *AlertData {
+	a.Class = class
+	return a
+}
+
 func (a AlertData) Finish() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
@@ -245,68 +165,12 @@ func (a AlertData) Finish() templ.Component {
 			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 		}
 		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var10 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var10 == nil {
-			templ_7745c5c3_Var10 = templ.NopComponent
+		templ_7745c5c3_Var5 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var5 == nil {
+			templ_7745c5c3_Var5 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
 		templ_7745c5c3_Err = Alert(a).Render(ctx, templ_7745c5c3_Buffer)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		if !templ_7745c5c3_IsBuffer {
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteTo(templ_7745c5c3_W)
-		}
-		return templ_7745c5c3_Err
-	})
-}
-
-func AlertWithComponentBuilder() *AlertWithComponentData {
-	return &AlertWithComponentData{
-		Color: FrankenColorPrimary,
-		Icon:  templ.NopComponent,
-	}
-}
-
-func (a *AlertWithComponentData) SetTitle(title string) *AlertWithComponentData {
-	a.Title = title
-	return a
-}
-
-func (a *AlertWithComponentData) SetContent(content templ.Component) *AlertWithComponentData {
-	a.Content = content
-	return a
-}
-
-func (a *AlertWithComponentData) SetColor(color FrankenColor) *AlertWithComponentData {
-	a.Color = color
-	return a
-}
-
-func (a *AlertWithComponentData) SetIcon(icon templ.Component) *AlertWithComponentData {
-	a.Icon = icon
-	return a
-}
-
-func (a *AlertWithComponentData) SetClose(close bool) *AlertWithComponentData {
-	a.Close = close
-	return a
-}
-
-func (a AlertWithComponentData) Finish() templ.Component {
-	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
-		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
-		if !templ_7745c5c3_IsBuffer {
-			templ_7745c5c3_Buffer = templ.GetBuffer()
-			defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
-		}
-		ctx = templ.InitializeContext(ctx)
-		templ_7745c5c3_Var11 := templ.GetChildren(ctx)
-		if templ_7745c5c3_Var11 == nil {
-			templ_7745c5c3_Var11 = templ.NopComponent
-		}
-		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = AlertWithComponent(a).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

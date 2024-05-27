@@ -13,7 +13,6 @@ import "bytes"
 import "fmt"
 
 type ButtonType string
-type ButtonColor string
 
 const (
 	ButtonTypeDefault ButtonType = "button"
@@ -78,7 +77,7 @@ func Button(data ButtonData) templ.Component {
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(string(data.Type))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 25, Col: 63}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 24, Col: 63}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -104,7 +103,7 @@ func Button(data ButtonData) templ.Component {
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(data.Text)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 25, Col: 163}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 24, Col: 163}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -137,7 +136,7 @@ func Button(data ButtonData) templ.Component {
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(string(data.Type))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 28, Col: 62}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 27, Col: 62}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -163,7 +162,7 @@ func Button(data ButtonData) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(data.Text)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 28, Col: 162}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/franken/button.templ`, Line: 27, Col: 162}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
