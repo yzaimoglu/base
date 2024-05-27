@@ -25,6 +25,12 @@ templ Franken() {
 			@franken.ArticleBuilder().SetTitle("Article").SetContent(
 				franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContentText("hello").Finish()).SetMetaText("Description").Finish()
 		</div>
+		<div class="bg-white border border-2 border-slate-50 p-8 rounded-lg gap-2 grid w-1/2">
+			@franken.BadgeBuilder().SetTitleText("test").Finish()
+			@franken.BadgeBuilder().SetTitleText("test").SetColor(franken.FrankenColorDanger).Finish()
+			@franken.BadgeBuilder().SetTitleText("test").SetBackgroundColor(franken.TailwindColorGreen, franken.TailwindColor50).Finish()
+			@franken.BadgeBuilder().SetTitleText("test").Finish()
+		</div>
 	</section>
 }
 
