@@ -50,9 +50,12 @@ func (t TailwindColor) Isset() bool {
 }
 
 const (
+	FrankenColorDefault   FrankenColor = "default"
+	FrankenColorGhost     FrankenColor = "ghost"
 	FrankenColorPrimary   FrankenColor = "primary"
 	FrankenColorSecondary FrankenColor = "secondary"
 	FrankenColorDanger    FrankenColor = "danger"
+	FrankenColorText      FrankenColor = "text"
 	FrankenColorLink      FrankenColor = "link"
 )
 
