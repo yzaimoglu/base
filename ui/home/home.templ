@@ -1,34 +1,13 @@
 package home
 
 import "github.com/yzaimoglu/base/utils/http"
+import "github.com/yzaimoglu/base/ui/franken"
 
 templ Test() {
-	<div class="bg-slate-500">
-		<button class="uk-button uk-button-secondary">Test</button>
-		<button class="uk-button uk-button-primary">Test</button>
-	</div>
-	<div>
-		<nav aria-label="Pagination">
-			<ul class="uk-pagination" uk-margin>
-				<li>
-					<a href="#"><span uk-pagination-previous></span></a>
-				</li>
-				<li><a href="#">1</a></li>
-				<li class="uk-disabled"><span>…</span></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li class="uk-active uk-disabled"><span aria-current="page">7</span></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li class="uk-disabled"><span>…</span></li>
-				<li><a href="#">20</a></li>
-				<li>
-					<a href="#"><span uk-pagination-next></span></a>
-				</li>
-			</ul>
-		</nav>
+	<div class="bg-green-100 border border-2 border-green-200 p-8 rounded-lg">
+		@franken.Button(franken.CustomButtom("custom", franken.ButtonTypeDefault, franken.ButtonColorDanger, "w-full", "mt-10"))
+		@franken.Button(franken.DefaultColoredButton("default colored", franken.ButtonColorSecondary))
+		@franken.Button(franken.SubmitColoredButton("submit colored", franken.ButtonColorPrimary))
 	</div>
 }
 

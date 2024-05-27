@@ -11,6 +11,7 @@ import "io"
 import "bytes"
 
 import "github.com/yzaimoglu/base/utils/http"
+import "github.com/yzaimoglu/base/ui/franken"
 
 func Test() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -25,7 +26,23 @@ func Test() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-slate-500\"><button class=\"uk-button uk-button-secondary\">Test</button> <button class=\"uk-button uk-button-primary\">Test</button></div><div><nav aria-label=\"Pagination\"><ul class=\"uk-pagination\" uk-margin><li><a href=\"#\"><span uk-pagination-previous></span></a></li><li><a href=\"#\">1</a></li><li class=\"uk-disabled\"><span>…</span></li><li><a href=\"#\">4</a></li><li><a href=\"#\">5</a></li><li><a href=\"#\">6</a></li><li class=\"uk-active uk-disabled\"><span aria-current=\"page\">7</span></li><li><a href=\"#\">8</a></li><li><a href=\"#\">9</a></li><li><a href=\"#\">10</a></li><li class=\"uk-disabled\"><span>…</span></li><li><a href=\"#\">20</a></li><li><a href=\"#\"><span uk-pagination-next></span></a></li></ul></nav></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"bg-green-100 border border-2 border-green-200 p-8 rounded-lg\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.Button(franken.CustomButtom("custom", franken.ButtonTypeDefault, franken.ButtonColorDanger, "w-full", "mt-10")).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.Button(franken.DefaultColoredButton("default colored", franken.ButtonColorSecondary)).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.Button(franken.SubmitColoredButton("submit colored", franken.ButtonColorPrimary)).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -56,7 +73,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.RequestID(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 40, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 19, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -69,7 +86,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.CurrentPath(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 45, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 24, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {

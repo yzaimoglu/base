@@ -1,0 +1,75 @@
+package franken
+
+import "fmt"
+
+type ButtonType string
+type ButtonColor string
+
+const (
+	ButtonColorPrimary   ButtonColor = "primary"
+	ButtonColorSecondary ButtonColor = "secondary"
+	ButtonColorDanger    ButtonColor = "danger"
+	ButtonColorLink      ButtonColor = "link"
+)
+
+const (
+	ButtonTypeDefault ButtonType = "button"
+	ButtonTypeSubmit  ButtonType = "submit"
+)
+
+type ButtonData struct {
+	Text  string
+	Type  ButtonType
+	Color ButtonColor
+	Class []string
+}
+
+func DefaultButton(text string, class ...string) ButtonData {
+	return ButtonData{
+		Text:  text,
+		Type:  ButtonTypeDefault,
+		Color: ButtonColorPrimary,
+		Class: class,
+	}
+}
+
+func DefaultColoredButton(text string, bColor ButtonColor, class ...string) ButtonData {
+	return ButtonData{
+		Text:  text,
+		Type:  ButtonTypeDefault,
+		Color: bColor,
+		Class: class,
+	}
+}
+
+func SubmitButton(text string, class ...string) ButtonData {
+	return ButtonData{
+		Text:  text,
+		Type:  ButtonTypeSubmit,
+		Color: ButtonColorPrimary,
+		Class: class,
+	}
+}
+
+
+func SubmitColoredButton(text string, bColor ButtonColor, class ...string) ButtonData {
+	return ButtonData{
+		Text:  text,
+		Type:  ButtonTypeSubmit,
+		Color: bColor,
+		Class: class,
+	}
+}
+
+func CustomButtom(text string, bType ButtonType, bColor ButtonColor, class ...string) ButtonData {
+	return ButtonData{
+		Text:  text,
+		Type:  bType,
+		Color: bColor,
+		Class: class,
+	}
+}
+
+templ Button(data ButtonData) {
+	<button type={ string(data.Type) } class={ templ.Classes("uk-button", fmt.Sprint("uk-button-"+data.Color), data.Class) }>{ data.Text }</button>
+}
