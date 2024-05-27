@@ -31,13 +31,18 @@ func NewRouter(e *echo.Echo, b *base.Base) *Router {
 
 func (r *Router) Setup() {
 	r.MiddlewareSetup()
-	r.Echo.GET("/api/v1/test", r.Controller.API.Test)
-	r.Echo.GET("/", r.Controller.Home.Index)
-	r.Echo.GET("/test", r.Controller.Home.Test)
+
+	log.Info().Msg("Registering API routes.")
+	apiGroup := r.Echo.Group("/api/v1/")
+	apiGroup.GET("test", r.Controller.API.Test)
+
+	log.Info().Msg("Registering view routes.")
+	viewGroup := r.Echo.Group("/", middleware.CSRF())
+	viewGroup.GET("", r.Controller.Home.Index)
+	viewGroup.GET("test", r.Controller.Home.Test)
 }
 
 func (r *Router) MiddlewareSetup() {
-	r.Echo.Pre(middleware.RemoveTrailingSlash())
 	log.Info().Msg("Enabling custom context middleware.")
 	r.Echo.Use(http_utils.EnableCustomContext)
 	log.Info().Msg("Enabling request id middleware.")
@@ -46,8 +51,6 @@ func (r *Router) MiddlewareSetup() {
 	r.Echo.Use(middleware.Recover())
 	log.Info().Msg("Enabling secure middleware.")
 	r.Echo.Use(middleware.Secure())
-	// log.Info().Msg("Enabling csrf middleware.")
-	// r.Echo.Use(middleware.CSRF())
 	limitMB := 50
 	log.Info().Msgf("Enabling body limit middleware set to %d MB.", limitMB)
 	r.Echo.Use(middleware.BodyLimit(50 * 1024 * 1024)) // 50 MB Body Limit
@@ -64,6 +67,7 @@ func (r *Router) MiddlewareSetup() {
 				Str("uri", v.URI).
 				Str("user_agent", c.Get(http_utils.KeyUserAgent).(string)).
 				Str("request_id", c.Get(http_utils.KeyRequestID).(string)).
+				Str("csrf_token", c.Get(http_utils.KeyCSRF).(string)).
 				Msgf("[HTTP] %d:  %d | %s", time.Now().UnixMilli(), v.Status, v.URI)
 			return nil
 		},
@@ -80,5 +84,6 @@ func (r *Router) MiddlewareSetup() {
 			Level: 5,
 		}))
 	}
-
+	r.Echo.File("/robots.txt", "./ui/static/robots.txt")
+	r.Echo.File("/sitemap.xml", "./ui/static/sitemap.xml")
 }

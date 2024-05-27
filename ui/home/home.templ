@@ -5,14 +5,19 @@ import "github.com/yzaimoglu/base/ui/franken"
 
 templ Test() {
 	<div class="bg-green-100 border border-2 border-green-200 p-8 rounded-lg">
-		@franken.Button(franken.CustomButtom("custom", franken.ButtonTypeDefault, franken.ButtonColorDanger, "w-full", "mt-10"))
-		@franken.Button(franken.DefaultColoredButton("default colored", franken.ButtonColorSecondary))
-		@franken.Button(franken.SubmitColoredButton("submit colored", franken.ButtonColorPrimary))
+		@franken.ButtonBuilder().SetText("Hello").SetColor(franken.ButtonColorSecondary).SetType(franken.ButtonTypeDefault).Finish()
+		@franken.ButtonBuilder().SetText("Hey").SetColor(franken.ButtonColorPrimary).SetType(franken.ButtonTypeSubmit).SetClass("w-full", "mb-5").SetDisabled(true).Finish()
+		@franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.ButtonColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish()
 	</div>
 }
 
 templ Show() {
 	<div>
+		<p>
+			CSRF:
+			<br/>
+			{ http_utils.CSRF(ctx) }
+		</p>
 		<p>
 			RequestID:
 			<br/>

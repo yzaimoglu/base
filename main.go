@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
+	config.ConfigureLogger()
 	a := base.NewBase()
 	config.MigrateConfiguration(a.Pocketbase)
-	config.Preconfiguration()
-	config.ConfigureLogger()
 
 	log.Info().Msg("Starting the server...")
+	config.Preconfiguration()
 	config.ConfigurePocketbase(a)
 	if err := a.Pocketbase.Start(); err != nil {
 		log.Fatal().Msgf("Could not start pocketbase: %s", err.Error())
