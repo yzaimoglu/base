@@ -1,11 +1,13 @@
 package franken
 
 type AccordionData struct {
-	Items []singleAccordionData
+	Items    []singleAccordionData
+	Multiple bool
 }
 
 type AccordionWithComponentData struct {
-	Items []singleAccordionWithComponentData
+	Items    []singleAccordionWithComponentData
+	Multiple bool
 }
 
 type singleAccordionData struct {
@@ -28,8 +30,18 @@ func getOpenClass(open bool) string {
 	}
 }
 
+func getAccordionAttribute(multiple bool) string {
+	attr := ""
+	if !multiple {
+		attr += "collapsible: true"
+	} else {
+		attr += "multiple: true"
+	}
+	return attr
+}
+
 templ Accordion(data AccordionData) {
-	<ul class="uk-accordion" uk-accordion>
+	<ul class="uk-accordion" uk-accordion={ getAccordionAttribute(data.Multiple) }>
 		for _, accordion := range(data.Items) {
 			<li class={ getOpenClass(accordion.Open) }>
 				<a class="uk-accordion-title" href>
@@ -50,7 +62,7 @@ templ Accordion(data AccordionData) {
 }
 
 templ AccordionWithComponent(data AccordionWithComponentData) {
-	<ul class="uk-accordion" uk-accordion>
+	<ul class="uk-accordion" uk-accordion={ getAccordionAttribute(data.Multiple) }>
 		for _, accordion := range(data.Items) {
 			<li class={ getOpenClass(accordion.Open) }>
 				<a class="uk-accordion-title" href>
@@ -72,7 +84,8 @@ templ AccordionWithComponent(data AccordionWithComponentData) {
 
 func AccordionBuilder() *AccordionData {
 	return &AccordionData{
-		Items: []singleAccordionData{},
+		Multiple: false,
+		Items:    []singleAccordionData{},
 	}
 }
 
@@ -85,13 +98,19 @@ func (a *AccordionData) AddItem(title string, content string, open bool) *Accord
 	return a
 }
 
+func (a *AccordionData) SetMultiple(multiple bool) *AccordionData {
+	a.Multiple = multiple
+	return a
+}
+
 templ (a AccordionData) Finish() {
 	@Accordion(a)
 }
 
 func AccordionWithComponentBuilder() *AccordionWithComponentData {
 	return &AccordionWithComponentData{
-		Items: []singleAccordionWithComponentData{},
+		Multiple: false,
+		Items:    []singleAccordionWithComponentData{},
 	}
 }
 
@@ -101,6 +120,11 @@ func (a *AccordionWithComponentData) AddItem(title string, content templ.Compone
 		Open:    open,
 		Content: content,
 	})
+	return a
+}
+
+func (a *AccordionWithComponentData) SetMultiple(multiple bool) *AccordionWithComponentData {
+	a.Multiple = multiple
 	return a
 }
 

@@ -46,7 +46,7 @@ func Test() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AccordionBuilder().AddItem("hello", "hello", true).AddItem("hey", "heyho", false).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.AccordionBuilder().AddItem("hello", "hello", true).AddItem("hey", "heyho", false).SetMultiple(true).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
