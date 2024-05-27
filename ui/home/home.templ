@@ -31,6 +31,9 @@ templ Franken() {
 			@franken.BadgeBuilder().SetTitleText("test").SetBackgroundColor(franken.TailwindColorGreen, franken.TailwindColor50).Finish()
 			@franken.BadgeBuilder().SetTitleText("test").Finish()
 		</div>
+		<div class="bg-white border border-2 border-slate-50 p-8 rounded-lg gap-2 grid">
+			@franken.BreadcrumbBuilder().AddItemText("hello", "https://yagi.sh", false, false).AddItemText("second", "https://yagi.sh", false, false).AddItemText("current", "https://yagi.sh", false, true).Finish()
+		</div>
 	</section>
 }
 

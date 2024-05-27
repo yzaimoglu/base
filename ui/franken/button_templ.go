@@ -184,7 +184,6 @@ func ButtonBuilder() *ButtonData {
 	return &ButtonData{
 		Text:     "Button",
 		Type:     ButtonTypeDefault,
-		Color:    FrankenColorPrimary,
 		Disabled: false,
 	}
 }

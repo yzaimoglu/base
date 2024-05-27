@@ -128,7 +128,7 @@ func Accordion(data AccordionData) templ.Component {
 func AccordionBuilder() *AccordionData {
 	return &AccordionData{
 		Multiple: false,
-		Items:    []singleAccordionData{},
+		Items:    make([]singleAccordionData, 0),
 	}
 }
 
