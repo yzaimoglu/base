@@ -2,16 +2,22 @@ package home
 
 import "github.com/yzaimoglu/base/utils/http"
 import "github.com/yzaimoglu/base/ui/franken"
+import "github.com/yzaimoglu/base/ui/lucide"
 
 templ Test() {
 	<div class="bg-green-100 border border-2 border-green-200 p-8 rounded-lg">
-		@franken.ButtonBuilder().SetText("Hello").SetColor(franken.ButtonColorSecondary).SetType(franken.ButtonTypeDefault).Finish()
-		@franken.ButtonBuilder().SetText("Hey").SetColor(franken.ButtonColorPrimary).SetType(franken.ButtonTypeSubmit).SetClass("w-full", "mb-5").SetDisabled(true).Finish()
-		@franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.ButtonColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish()
+		@franken.ButtonBuilder().SetText("Hello").SetColor(franken.FrankenColorSecondary).SetType(franken.ButtonTypeDefault).Finish()
+		@franken.ButtonBuilder().SetText("Hey").SetColor(franken.FrankenColorPrimary).SetType(franken.ButtonTypeSubmit).SetClass("w-full", "mb-5").SetDisabled(true).Finish()
+		@franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish()
 	</div>
 	<div class="container mx-auto w-1/2 bg-green-100 border border-2 border-green-200 p-8 rounded-lg">
 		@franken.AccordionBuilder().AddItem("hello", "hello", true).AddItem("hey", "heyho", false).SetMultiple(true).Finish()
-		@franken.AccordionWithComponentBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.ButtonColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish()
+		@franken.AccordionWithComponentBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish()
+	</div>
+	<div class="container mx-auto w-1/2 bg-green-100 border border-2 border-green-200 p-8 rounded-lg gap-2 grid">
+		@franken.AlertBuilder().SetTitle("hello").SetClose(true).SetColor(franken.FrankenColorDanger).SetContent("hello").Finish()
+		@franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").Finish()
+		@franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").SetIcon(lucide.Rocket()).Finish()
 	</div>
 }
 

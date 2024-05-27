@@ -6,13 +6,6 @@ type ButtonType string
 type ButtonColor string
 
 const (
-	ButtonColorPrimary   ButtonColor = "primary"
-	ButtonColorSecondary ButtonColor = "secondary"
-	ButtonColorDanger    ButtonColor = "danger"
-	ButtonColorLink      ButtonColor = "link"
-)
-
-const (
 	ButtonTypeDefault ButtonType = "button"
 	ButtonTypeSubmit  ButtonType = "submit"
 )
@@ -20,7 +13,7 @@ const (
 type ButtonData struct {
 	Text     string
 	Type     ButtonType
-	Color    ButtonColor
+	Color    FrankenColor
 	Disabled bool
 	Link     string
 	Class    []string
@@ -40,7 +33,7 @@ func ButtonBuilder() *ButtonData {
 	return &ButtonData{
 		Text:     "Button",
 		Type:     ButtonTypeDefault,
-		Color:    ButtonColorPrimary,
+		Color:    FrankenColorPrimary,
 		Disabled: false,
 	}
 }
@@ -55,7 +48,7 @@ func (b *ButtonData) SetType(bType ButtonType) *ButtonData {
 	return b
 }
 
-func (b *ButtonData) SetColor(bColor ButtonColor) *ButtonData {
+func (b *ButtonData) SetColor(bColor FrankenColor) *ButtonData {
 	b.Color = bColor
 	return b
 }

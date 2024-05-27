@@ -1,0 +1,133 @@
+package franken
+
+import "fmt"
+
+type AlertData struct {
+	Title   string
+	Content string
+	Color   FrankenColor
+	Icon    templ.Component
+	Close   bool
+}
+
+type AlertWithComponentData struct {
+	Title   string
+	Content templ.Component
+	Color   FrankenColor
+	Icon    templ.Component
+	Close   bool
+}
+
+templ Alert(data AlertData) {
+	<div
+		class={ templ.Classes(map[string]bool{
+			"uk-alert": true,
+			fmt.Sprintf("uk-alert-%s", string(data.Color)): string(data.Color) != "",
+		}) }
+		uk-alert
+	>
+		@data.Icon
+		if data.Close {
+			<a href class="uk-alert-close" uk-close></a>
+		}
+		if data.Title != "" {
+			<div class="uk-alert-title">{ data.Title }</div>
+		}
+		<div class="uk-alert-description">
+			{ data.Content }
+		</div>
+	</div>
+}
+
+templ AlertWithComponent(data AlertWithComponentData) {
+	<div
+		class={ templ.Classes(map[string]bool{
+			"uk-alert": true,
+			fmt.Sprintf("uk-alert-%s", string(data.Color)): string(data.Color) != "",
+		}) }
+		uk-alert
+	>
+		@data.Icon
+		if data.Close {
+			<a href class="uk-alert-close" uk-close></a>
+		}
+		if data.Title != "" {
+			<div class="uk-alert-title">{ data.Title }</div>
+		}
+		<div class="uk-alert-description">
+			@data.Content
+		</div>
+	</div>
+}
+
+func AlertBuilder() *AlertData {
+	return &AlertData{
+		Color: FrankenColorPrimary,
+		Icon:  templ.NopComponent,
+	}
+}
+
+func (a *AlertData) SetTitle(title string) *AlertData {
+	a.Title = title
+	return a
+}
+
+func (a *AlertData) SetContent(content string) *AlertData {
+	a.Content = content
+	return a
+}
+
+func (a *AlertData) SetColor(color FrankenColor) *AlertData {
+	a.Color = color
+	return a
+}
+
+func (a *AlertData) SetIcon(icon templ.Component) *AlertData {
+	a.Icon = icon
+	return a
+}
+
+func (a *AlertData) SetClose(close bool) *AlertData {
+	a.Close = close
+	return a
+}
+
+templ (a AlertData) Finish() {
+	@Alert(a)
+}
+
+func AlertWithComponentBuilder() *AlertWithComponentData {
+	return &AlertWithComponentData{
+		Color: FrankenColorPrimary,
+		Icon:  templ.NopComponent,
+	}
+}
+
+func (a *AlertWithComponentData) SetTitle(title string) *AlertWithComponentData {
+	a.Title = title
+	return a
+}
+
+func (a *AlertWithComponentData) SetContent(content templ.Component) *AlertWithComponentData {
+	a.Content = content
+	return a
+}
+
+func (a *AlertWithComponentData) SetColor(color FrankenColor) *AlertWithComponentData {
+	a.Color = color
+	return a
+}
+
+func (a *AlertWithComponentData) SetIcon(icon templ.Component) *AlertWithComponentData {
+	a.Icon = icon
+	return a
+}
+
+func (a *AlertWithComponentData) SetClose(close bool) *AlertWithComponentData {
+	a.Close = close
+	return a
+}
+
+templ (a AlertWithComponentData) Finish() {
+	@AlertWithComponent(a)
+}

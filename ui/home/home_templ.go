@@ -12,6 +12,7 @@ import "bytes"
 
 import "github.com/yzaimoglu/base/utils/http"
 import "github.com/yzaimoglu/base/ui/franken"
+import "github.com/yzaimoglu/base/ui/lucide"
 
 func Test() templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
@@ -30,15 +31,15 @@ func Test() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hello").SetColor(franken.ButtonColorSecondary).SetType(franken.ButtonTypeDefault).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hello").SetColor(franken.FrankenColorSecondary).SetType(franken.ButtonTypeDefault).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hey").SetColor(franken.ButtonColorPrimary).SetType(franken.ButtonTypeSubmit).SetClass("w-full", "mb-5").SetDisabled(true).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hey").SetColor(franken.FrankenColorPrimary).SetType(franken.ButtonTypeSubmit).SetClass("w-full", "mb-5").SetDisabled(true).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.ButtonColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -50,7 +51,23 @@ func Test() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.AccordionWithComponentBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.ButtonColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.AccordionWithComponentBuilder().AddItem("hello", franken.ButtonBuilder().SetText("Hey").SetLink("https://yagi.sh").SetColor(franken.FrankenColorPrimary).SetClass("w-full", "mb-5").SetDisabled(false).Finish(), false).Finish().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"container mx-auto w-1/2 bg-green-100 border border-2 border-green-200 p-8 rounded-lg gap-2 grid\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetColor(franken.FrankenColorDanger).SetContent("hello").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = franken.AlertBuilder().SetTitle("hello").SetClose(true).SetContent("hello").SetIcon(lucide.Rocket()).Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -85,7 +102,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var3 string
 		templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.CSRF(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 23, Col: 25}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 29, Col: 25}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 		if templ_7745c5c3_Err != nil {
@@ -98,7 +115,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var4 string
 		templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.RequestID(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 28, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 34, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 		if templ_7745c5c3_Err != nil {
@@ -111,7 +128,7 @@ func Show() templ.Component {
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(http_utils.CurrentPath(ctx))
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 33, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `ui/home/home.templ`, Line: 39, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
