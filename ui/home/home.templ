@@ -42,6 +42,7 @@ templ Franken() {
 	@franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3", "flex", "flex-row", "justify-center", "items-center", "text-sm").Finish()
 	@franken.ContainerBuilder().SetContent(TestOut(6)).SetClass("w-2/3", "flex", "flex-row", "justify-center", "items-center", "text-sm").Finish()
 	@franken.ContainerBuilder().SetContent(TestOut(7)).SetClass("w-2/3", "flex", "flex-row", "justify-center", "items-center", "text-sm").Finish()
+	@franken.BreadcrumbBuilder().AddItemText("Home", "https://yagi.sh", false, true).AddItemText("Test", "/", false, false).Finish()
 }
 
 templ TestOut(i uint16) {

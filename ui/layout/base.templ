@@ -1,6 +1,5 @@
 package layout
 
-import "github.com/yzaimoglu/base/ui/components"
 import "github.com/yzaimoglu/base/ui/config"
 
 templ CenterPage(gap uint16) {
@@ -20,7 +19,7 @@ templ Base(title, description string, alpine bool, htmx bool, cmp templ.Componen
 	<html lang="en" data-theme="light">
 		@Head(title, description, alpine, htmx, true)
 		<body>
-			@components.CookieBanner(1000)
+			// @components.CookieBanner(1000)
 			// @components.Header()
 			@CenterPage(2) {
 				@cmp
