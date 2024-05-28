@@ -3,6 +3,7 @@ package home
 import "github.com/yzaimoglu/base/utils/http"
 import "github.com/yzaimoglu/base/ui/franken"
 import "github.com/yzaimoglu/base/ui/lucide"
+import "time"
 
 templ Franken() {
 	@franken.Component() {
@@ -40,6 +41,7 @@ templ Franken() {
 		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	</section>
 	@franken.ContainerBuilder().SetContent(TestOut(4)).SetClass("w-2/3").Finish()
+	@franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3").Finish()
 }
 
 templ TestOut(i uint16) {
@@ -53,6 +55,8 @@ templ TestOut(i uint16) {
 		@franken.BadgeBuilder().SetTitleText("Hello").SetBackgroundColor(franken.TailwindColorPurple, franken.TailwindColor200).Finish()
 	} else if i == 4 {
 		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
+	} else if i == 5 {
+		@franken.CountdownBuilder().SetTime(time.Now().Add(5 * time.Hour)).Finish()
 	}
 }
 

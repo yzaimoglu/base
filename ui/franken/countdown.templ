@@ -1,0 +1,40 @@
+package franken
+
+import "time"
+import "fmt"
+
+type CountdownData struct {
+	Time time.Time
+}
+
+func formatTime(time time.Time) string {
+	formattedTime := time.Format("2006-01-02T15:04:05-07:00")
+	return formattedTime
+}
+
+templ Countdown(data CountdownData) {
+	<div uk-countdown={ fmt.Sprint("date: " + formatTime(data.Time)) }>
+		<span class="uk-countdown-days uk-countdown-number"></span>
+		<span class="uk-countdown-separator">:</span>
+		<span class="uk-countdown-hours uk-countdown-number"></span>
+		<span class="uk-countdown-separator">:</span>
+		<span class="uk-countdown-minutes uk-countdown-number"></span>
+		<span class="uk-countdown-separator">:</span>
+		<span class="uk-countdown-seconds uk-countdown-number"></span>
+	</div>
+}
+
+func CountdownBuilder() *CountdownData {
+	return &CountdownData{
+		Time: time.Now(),
+	}
+}
+
+func (c *CountdownData) SetTime(time time.Time) *CountdownData {
+	c.Time = time
+	return c
+}
+
+templ (c CountdownData) Finish() {
+	@Countdown(c)
+}
