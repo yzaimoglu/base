@@ -7,5 +7,6 @@ module.exports = {
   theme: {
     extend: {},
   },
+  important: true,
   presets: [presetQuick({ theme: "slate" })],
 }

@@ -41,7 +41,7 @@ templ Franken() {
 		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	</section>
 	@franken.ContainerBuilder().SetContent(TestOut(4)).SetClass("w-2/3").Finish()
-	@franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3").Finish()
+	@franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3", "flex", "flex-row", "justify-center", "items-center", "text-sm").Finish()
 }
 
 templ TestOut(i uint16) {
@@ -56,7 +56,7 @@ templ TestOut(i uint16) {
 	} else if i == 4 {
 		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	} else if i == 5 {
-		@franken.CountdownBuilder().SetTime(time.Now().Add(5 * time.Hour)).Finish()
+		@franken.CountdownBuilder().SetTime(time.Now().Add(24 * 30 * time.Hour)).SetTextSize(franken.TailwindTextL).SetSeparator(":").Finish()
 	}
 }
 

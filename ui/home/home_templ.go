@@ -148,7 +148,7 @@ func Franken() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3").Finish().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = franken.ContainerBuilder().SetContent(TestOut(5)).SetClass("w-2/3", "flex", "flex-row", "justify-center", "items-center", "text-sm").Finish().Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -201,7 +201,7 @@ func TestOut(i uint16) templ.Component {
 				return templ_7745c5c3_Err
 			}
 		} else if i == 5 {
-			templ_7745c5c3_Err = franken.CountdownBuilder().SetTime(time.Now().Add(5*time.Hour)).Finish().Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = franken.CountdownBuilder().SetTime(time.Now().Add(24*30*time.Hour)).SetTextSize(franken.TailwindTextL).SetSeparator(":").Finish().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
