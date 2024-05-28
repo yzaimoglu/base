@@ -6,9 +6,7 @@ import "github.com/yzaimoglu/base/ui/lucide"
 import "time"
 
 templ Franken() {
-	@franken.Component() {
-		@franken.ButtonBuilder().SetText("hello").Finish()
-	}
+	@franken.DividerBuilder().SetType(franken.DividerTypeHorizontal).Finish()
 	<section class="container mx-auto w-1/2 flex flex-col gap-2">
 		<div class="bg-white border border-2 border-slate-50 p-8 rounded-lg">
 			@franken.ButtonBuilder().SetText("Hello").SetColor(franken.FrankenColorSecondary).SetType(franken.ButtonTypeDefault).Finish()
