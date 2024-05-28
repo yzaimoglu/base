@@ -5,6 +5,9 @@ import "github.com/yzaimoglu/base/ui/franken"
 import "github.com/yzaimoglu/base/ui/lucide"
 
 templ Franken() {
+	@franken.Component() {
+		@franken.ButtonBuilder().SetText("hello").Finish()
+	}
 	<section class="container mx-auto w-1/2 flex flex-col gap-2">
 		<div class="bg-white border border-2 border-slate-50 p-8 rounded-lg">
 			@franken.ButtonBuilder().SetText("Hello").SetColor(franken.FrankenColorSecondary).SetType(franken.ButtonTypeDefault).Finish()
@@ -36,6 +39,7 @@ templ Franken() {
 		</div>
 		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	</section>
+	@franken.ContainerBuilder().SetContent(TestOut(4)).SetClass("w-2/3").Finish()
 }
 
 templ TestOut(i uint16) {
@@ -47,6 +51,8 @@ templ TestOut(i uint16) {
 		@franken.ButtonBuilder().SetText("TestButton").SetColor(franken.FrankenColorPrimary).SetClass("w-full").SetLink("https://yagi.sh").Finish()
 	} else if i == 3 {
 		@franken.BadgeBuilder().SetTitleText("Hello").SetBackgroundColor(franken.TailwindColorPurple, franken.TailwindColor200).Finish()
+	} else if i == 4 {
+		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	}
 }
 

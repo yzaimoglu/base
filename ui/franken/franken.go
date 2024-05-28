@@ -2,13 +2,7 @@ package franken
 
 import (
 	"fmt"
-
-	"github.com/a-h/templ"
 )
-
-func NoComponent() templ.Component {
-	return nil
-}
 
 type FrankenColor string
 
