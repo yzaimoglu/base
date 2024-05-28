@@ -34,7 +34,20 @@ templ Franken() {
 		<div class="bg-white border border-2 border-slate-50 p-8 rounded-lg gap-2 grid">
 			@franken.BreadcrumbBuilder().AddItemText("hello", "https://yagi.sh", false, false).AddItemText("second", "https://yagi.sh", false, false).AddItemText("current", "https://yagi.sh", false, true).Finish()
 		</div>
+		@franken.CardBuilder().SetBody(TestOut(1)).SetFooter(TestOut(2)).SetHeader(TestOut(3)).Finish()
 	</section>
+}
+
+templ TestOut(i uint16) {
+	if i == 1 {
+		<div class="flex flex-row justify-center items-center">
+			@franken.BreadcrumbBuilder().AddItemText("hello", "https://yagi.sh", false, false).AddItemText("second", "https://yagi.sh", false, false).AddItemText("current", "https://yagi.sh", false, true).Finish()
+		</div>
+	} else if i == 2 {
+		@franken.ButtonBuilder().SetText("TestButton").SetColor(franken.FrankenColorPrimary).SetClass("w-full").SetLink("https://yagi.sh").Finish()
+	} else if i == 3 {
+		@franken.BadgeBuilder().SetTitleText("Hello").SetBackgroundColor(franken.TailwindColorPurple, franken.TailwindColor200).Finish()
+	}
 }
 
 templ Index() {

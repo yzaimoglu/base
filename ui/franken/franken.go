@@ -1,6 +1,14 @@
 package franken
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/a-h/templ"
+)
+
+func NoComponent() templ.Component {
+	return nil
+}
 
 type FrankenColor string
 
@@ -44,6 +52,13 @@ func (t TailwindColor) String() string {
 
 func (t TailwindColor) Isset() bool {
 	if string(t.Type) != "" && string(t.Weight) != "" {
+		return true
+	}
+	return false
+}
+
+func (f FrankenColor) Isset() bool {
+	if string(f) != "" {
 		return true
 	}
 	return false
