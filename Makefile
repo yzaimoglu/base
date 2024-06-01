@@ -16,6 +16,9 @@ prod: build
 	@$(TARGET) serve
 
 backend-install:
+	@go install github.com/bokwoon95/wgo@latest
+	@go install github.com/a-h/templ/cmd/templ@latest
+	@go get github.com/a-h/templ
 	@go mod tidy
 
 tailwind:
@@ -25,6 +28,7 @@ tailwind-build:
 	@npm run build
 
 tailwind-install:
+	@npm install
 
 templ: templ-dev
 	
@@ -41,7 +45,8 @@ backend-build:
 dev: tailwind-build templ-build
 
 install: tailwind-build backend-install
-
+	@echo "Installed dependencies."
+	
 build: tailwind-build templ-build backend-build
 	
 clean:
