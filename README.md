@@ -81,7 +81,7 @@ Distributed under the BSD-3 License. See [LICENSE](https://github.com/yzaimoglu/
 * [Go](https://go.dev)
 * [Pocketbase](https://pocketbase.io)
 * [Otter](https://github.com/maypok86/otter)
-* [Templ](https://svelte.dev/)
+* [Templ](https://templ.guide/)
 * [Tailwind](https://tailwindcss.com/)
 * [Alpine](https://alpinejs.dev/)
 * [HTMX](https://htmx.org/)
