@@ -7,7 +7,7 @@
   <h3 align="center">Base</h3>
 
   <p align="center">
-    A preconfigured extended Pocketbase app with <a href="https://github.com/yzaimoglu/base/tree/svelte">Svelte</a> or <a href="https://github.com/yzaimoglu/base/tree/templ">Templ</a> as a Frontend to use in future applications
+    A preconfigured extended Pocketbase app with <a href="https://github.com/yzaimoglu/base/tree/svelte">Svelte</a>, <a href="https://github.com/yzaimoglu/base/tree/templ">Templ</a> or <a href="https://github.com/yzaimoglu/base/tree/gomponents">Gomponents</a> as a Frontend to use in future applications
     <br/>
     <br/>
     <a href="https://github.com/yzaimoglu/base/issues">Report Bug</a>
@@ -37,7 +37,7 @@
 
 ## Built With
 
-We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [Otter](https://github.com/maypok86/otter), [Svelte](https://svelte.dev/), [Tailwind](https://tailwindcss.com/) and [Shadcn-UI](https://ui.shadcn.com/).
+We are using [Go](https://go.dev), [Pocketbase](https://pocketbase.io), [Otter](https://github.com/maypok86/otter), [Tailwind](https://tailwindcss.com/).
 
 ## Getting Started
 
@@ -81,7 +81,5 @@ Distributed under the BSD-3 License. See [LICENSE](https://github.com/yzaimoglu/
 * [Go](https://go.dev)
 * [Pocketbase](https://pocketbase.io)
 * [Otter](https://github.com/maypok86/otter)
-* [Svelte](https://svelte.dev/)
 * [Tailwind](https://tailwindcss.com/)
-* [Shadcn-UI](https://ui.shadcn.com/)
 * [Gopherize Me](https://gopherize.me/)
