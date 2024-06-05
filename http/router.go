@@ -63,23 +63,22 @@ func (r *Router) MiddlewareSetup() {
 	r.Echo.Use(http_utils.SetContextValues)
 	log.Info().Msg("Enabling logger middleware.")
 	r.Echo.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
-		LogURI:    true,
-		LogStatus: true,
+		LogURI:     true,
+		LogStatus:  true,
+		LogLatency: true,
 		LogValuesFunc: func(c echo.Context, v middleware.RequestLoggerValues) error {
 			log.Info().
 				Str("type", "http").
 				Int("status", v.Status).
 				Str("uri", v.URI).
+				Str("latency", v.Latency.String()).
 				Str("user_agent", c.Get(http_utils.KeyUserAgent).(string)).
 				Str("request_id", c.Get(http_utils.KeyRequestID).(string)).
 				Str("csrf_token", c.Get(http_utils.KeyCSRF).(string)).
-				Msgf("[HTTP] %d:  %d | %s", time.Now().UnixMilli(), v.Status, v.URI)
+				Msgf("[HTTP] %d:  %d | %s (%s)", time.Now().UnixMilli(), v.Status, v.URI, v.Latency.String())
 			return nil
 		},
 	}))
-	log.Info().Msg("Registering custom http error handler.")
-	r.Echo.HTTPErrorHandler = http_utils.NewHTTPErrorHandler(true)
-
 	log.Info().Msg("Registering static assets.")
 	if config_utils.IsDebug() {
 		log.Debug().Msg("Disabling cache for static assets.")
