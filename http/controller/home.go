@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/labstack/echo/v5"
 	"github.com/maragudk/gomponents"
+	"github.com/maragudk/gomponents/components"
 	"github.com/maragudk/gomponents/html"
 	"github.com/yzaimoglu/base/base"
 	"github.com/yzaimoglu/base/http/view"
@@ -25,15 +26,21 @@ func (c *HomeController) Index(ctx echo.Context) error {
 		ctx,
 		"Index",
 		"Index Page",
-		html.Div(gomponents.Text("Test Page")),
+		html.Div(components.Classes(map[string]bool{
+			"bg-red-800":     true,
+			"text-sm":        false,
+			"justify-center": true,
+			"flex":           true,
+			"items-center":   true,
+		}), gomponents.Text("Test Page")),
 	))
 }
 
 func (c *HomeController) Franken(ctx echo.Context) error {
 	return c.View.NotFound(ctx, c.View.Page(
 		ctx,
-		"Index",
-		"Index Page",
+		"Franken",
+		"Franken Page",
 		html.Div(gomponents.Text("Franken Page")),
 	))
 }
