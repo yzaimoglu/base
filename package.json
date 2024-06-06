@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Base setup for Templ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "postcss ./ui/input.css -o ./ui/static/main.css",
     "test": "echo \"Error: no test specified\" && exit 1"
