@@ -44,7 +44,7 @@ backend-build:
 	
 dev: tailwind-build templ-build
 
-install: tailwind-build backend-install
+install: tailwind-install tailwind-build backend-install
 	@echo "Installed dependencies."
 	
 build: tailwind-build templ-build backend-build
