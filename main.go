@@ -9,6 +9,7 @@ import (
 
 func main() {
 	config.ConfigureLogger()
+	log.Info().Msg("Starting setup.")
 	a := base.NewBase()
 	config.MigrateConfiguration(a.Pocketbase)
 
